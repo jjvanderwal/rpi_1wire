@@ -37,8 +37,9 @@ pairwise=CCMP TKIP
 group=CCMP TKIP
 psk="WIFI-PASSWORD-GOES-HERE"
 }
-
 #reboot and wifi should be working
+
+###now setup the one wire stuffs
 
 
 
