@@ -8,7 +8,37 @@ vi authorized_keys #add public keys
 sudo apt-get update
 sudo apt-get upgrade
 
+###setup git and the repos
 sudo apt-get install git #install git
+git clone git@github.com:jjvanderwal/rpi_1wire.git ##setup git repos after ssh key is installed
+
+###setup the vnc
+sudo apt-get install tightvncserver
+vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565 ##pw onewire
+
+###setup the wifi
+sudo nano /etc/network/interfaces #put the following in here
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf #put the following in here
+network={
+ssid="NETGEAR18"
+proto=RSN
+key_mgmt=WPA-PSK
+pairwise=CCMP TKIP
+group=CCMP TKIP
+psk="WIFI-PASSWORD-GOES-HERE"
+}
+
+#reboot and wifi should be working
 
 
 
