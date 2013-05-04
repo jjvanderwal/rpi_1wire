@@ -42,7 +42,14 @@ psk="WIFI-PASSWORD-GOES-HERE"
 ###now setup the one wire stuffs
 sudo apt-get install owfs
 lsusb #check dallas instruments installed
+sudo mkdir /mnt/1wire #create the mount point
 sudo nano /etc/owfs.conf #modify the config to comment out fake, enable usb server = all, ensure mount point correct, then reboot
+#sudo owfs -u –mountpoint=/mnt/1wire/ #run if mount not automatic
+##to auto mount owfs
+sudo cp -af /home/pi/rpi_1wire/support.files/owfs.sh /etc/init.d/owfs.sh #copy over the supporting file
+sudo chmod +x /etc/init.d/owfs.sh
+sudo update-rc.d owfs.sh defaults
+
 
 
 ########

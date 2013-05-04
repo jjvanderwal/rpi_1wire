@@ -5,7 +5,7 @@ MOUNTPOINT='/mnt/1wire';
  case "$1" in
         start)
          echo "starting script owfs with USB support..";
-         echo `/opt/owfs/bin/owfs -u --allow_other --mountpoint=$MOUNTPOINT`
+         echo `owfs -u --allow_other --mountpoint=$MOUNTPOINT`
          ;;
         stop)
          echo "stopping script owfs by unloading mount-point ..";
