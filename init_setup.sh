@@ -14,7 +14,7 @@ git clone git@github.com:jjvanderwal/rpi_1wire.git ##setup git repos after ssh k
 
 ###setup the vnc
 sudo apt-get install tightvncserver
-vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565 ##pw onewire
+vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565 ## to start the vnc server pw onewire
 
 ###setup the wifi
 sudo nano /etc/network/interfaces #put the following in here
@@ -40,7 +40,9 @@ psk="WIFI-PASSWORD-GOES-HERE"
 #reboot and wifi should be working
 
 ###now setup the one wire stuffs
-
+sudo apt-get install owfs
+lsusb #check dallas instruments installed
+sudo nano /etc/owfs.conf #modify the config to comment out fake, enable usb server = all, ensure mount point correct, then reboot
 
 
 ########
